@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @posts = @group.posts
   end
 
   def edit
@@ -51,7 +52,7 @@ end
         redirect_to root_path, alert: "You have no permission."
       end
     end
-  
+
 
   def group_params
        params.require(:group).permit(:title, :description)
